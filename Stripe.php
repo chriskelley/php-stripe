@@ -12,7 +12,7 @@ define( 'STRIPE_METHOD_DELETE', 'delete' );
  * 
  * @copyright   Copyright (c) 2011 Pixative Solutions
  * @author      Ben Cessa <ben@pixative.com>
- * @author_url  http://bitslice.net
+ * @author_url  http://www.pixative.com
  */
 class Stripe {
 	/**
