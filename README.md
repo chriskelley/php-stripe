@@ -32,7 +32,7 @@ That's it! Have fun.
 Codeigniter
 -----------
 Oh by the way! This library is completely functional as standalone but I developed it as a Codeigniter library,
-to use it that way you simply create a config file in: {APPLICATION}/config/stripe.com to store the config array.
+to use it that way you simply create a config file in: {APPLICATION}/config/stripe.php to store the config array.
 Then is just the usual deal that you already know and love!
 
 	$this->load->library( 'stripe' );
