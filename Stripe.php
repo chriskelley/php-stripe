@@ -380,6 +380,45 @@ class Stripe {
 	}
 	
 	/**
+	 * Get infomation about a specific event
+	 * 
+	 * @param  string        The event ID
+	 */
+	public function event_info( $event_id ) {
+		return $this->_send_request( 'events/'.$event_id );
+	}
+	
+	/**
+	 * Get a list of events on the system
+	 * 
+	 * @param  string        A string containing a specific event name, or group of events using * as a wildcard.
+	 * @param  string/dict   A filter on the list based on the events created date. The value can be a string with an exact UTC timestamp, 
+	 *						 or it can be a dictionary with the following options:
+	 *							gt (optional)
+	 *								Return values should have been created after this timestamp.
+	 *							gte (optional)
+	 *								Return values should have been created after or equal to this timestamp.
+	 *							lt (optional)
+	 *								Return values should have been created before this timestamp.
+	 *							lte (optional) 
+	 *								Return values should have been created before or equal to this timestamp.
+	 * @param  int           Number of invoices to retrieve, default 10, max 100
+	 * @param  int           Offset to start the list from, default 0
+	 */
+	public function event_list( $type = NULL, $created = NULL, $count = 10, $offset = 0 ) {
+		$params['count'] = $count;
+		$params['offset'] = $offset;
+		if( $type )
+			$params['type'] = $type;
+		if( $created )
+			$params['created'] = $created;
+		
+		$vars = http_build_query( $params, NULL, '&' );
+		
+		return $this->_send_request( 'events?'.$vars );
+	}
+	
+	/**
 	 * Private utility function that prepare and send the request to the API servers
 	 * 
 	 * @param  string        The URL segments to use to complete the http request
